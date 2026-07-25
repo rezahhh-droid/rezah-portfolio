@@ -1,0 +1,116 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+site_url: https://your-site.netlify.app
+display_url: https://your-site.netlify.app
+
+collections:
+  - name: "content"
+    label: "Site Content"
+    files:
+      - name: "content"
+        label: "Edit Portfolio"
+        file: "content/content.json"
+        fields:
+
+          - { label: "Hero", name: "hero", widget: "object", collapsed: false, fields:
+              - { label: "Name — Line 1", name: "titleLine1", widget: "string" }
+              - { label: "Name — Line 2", name: "titleLine2", widget: "string" }
+              - { label: "Role tag (small italic word next to name)", name: "roleTag", widget: "string" }
+              - { label: "Hero portrait image", name: "image", widget: "image" }
+              - { label: "Intro sentence", name: "subtext", widget: "text" }
+              - { label: "Availability line", name: "availabilityLine", widget: "string" }
+            }
+
+          - { label: "Scrolling ticker words", name: "marquee", widget: "list", field: { label: "Word", name: "word", widget: "string" } }
+
+          - { label: "Manifesto statement (wrap words in *asterisks* to highlight them in wine-red italic)", name: "manifesto", widget: "text" }
+
+          - { label: "Showreel Section", name: "reel", widget: "object", collapsed: true, fields:
+              - { label: "Show this section", name: "enabled", widget: "boolean", default: true }
+              - { label: "Small label", name: "kicker", widget: "string" }
+              - { label: "Heading — plain line", name: "headingLine1", widget: "string" }
+              - { label: "Heading — italic line", name: "headingItalic", widget: "string" }
+              - { label: "Cover image (shown behind Play button)", name: "image", widget: "image" }
+              - { label: "Video file (optional — overrides image, autoplays)", name: "video", widget: "file", required: false, allow_multiple: false }
+              - { label: "Caption under the player", name: "note", widget: "string" }
+            }
+
+          - { label: "Selected Work Section", name: "work", widget: "object", collapsed: true, fields:
+              - { label: "Show this section", name: "enabled", widget: "boolean", default: true }
+              - { label: "Small label", name: "kicker", widget: "string" }
+              - { label: "Heading — line 1", name: "headingLine1", widget: "string" }
+              - { label: "Heading — line 2", name: "headingLine2", widget: "string" }
+              - { label: "Heading — italic line", name: "headingItalic", widget: "string" }
+              - { label: "Intro line", name: "intro", widget: "text" }
+              - { label: "Closing link text", name: "endLabel", widget: "string" }
+              - { label: "Closing link destination", name: "endLink", widget: "string" }
+              - { label: "Projects", name: "items", widget: "list", summary: "{{title}}", fields:
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Project title", name: "title", widget: "string" }
+                  - { label: "Category tag", name: "tag", widget: "string" }
+                  - { label: "Tall card (portrait crop instead of wide)", name: "tall", widget: "boolean", default: false }
+                }
+            }
+
+          - { label: "Motion Section (4 fixed frames)", name: "motion", widget: "object", collapsed: true, fields:
+              - { label: "Show this section", name: "enabled", widget: "boolean", default: true }
+              - { label: "Small label", name: "kicker", widget: "string" }
+              - { label: "Heading — plain line", name: "headingLine1", widget: "string" }
+              - { label: "Heading — italic line", name: "headingItalic", widget: "string" }
+              - { label: "Note line", name: "note", widget: "string" }
+              - { label: "Frames", name: "items", widget: "list", summary: "{{tag}}", fields:
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Video file (optional — overrides image, autoplays)", name: "video", widget: "file", required: false, allow_multiple: false }
+                  - { label: "Tag label", name: "tag", widget: "string" }
+                }
+            }
+
+          - { label: "Services Section", name: "services", widget: "object", collapsed: true, fields:
+              - { label: "Show this section", name: "enabled", widget: "boolean", default: true }
+              - { label: "Small label", name: "kicker", widget: "string" }
+              - { label: "Services", name: "items", widget: "list", summary: "{{title}}", fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Preview image (appears on hover)", name: "image", widget: "image" }
+                }
+            }
+
+          - { label: "Stats Section", name: "stats", widget: "object", collapsed: true, fields:
+              - { label: "Show this section", name: "enabled", widget: "boolean", default: true }
+              - { label: "Small label", name: "kicker", widget: "string" }
+              - { label: "Stats", name: "items", widget: "list", summary: "{{value}}{{suffix}} — {{label}}", fields:
+                  - { label: "Number", name: "value", widget: "number", value_type: "int" }
+                  - { label: "Suffix (e.g. +, M+, h)", name: "suffix", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+                }
+            }
+
+          - { label: "About Section", name: "about", widget: "object", collapsed: true, fields:
+              - { label: "Show this section", name: "enabled", widget: "boolean", default: true }
+              - { label: "Small label", name: "kicker", widget: "string" }
+              - { label: "Portrait image", name: "image", widget: "image" }
+              - { label: "Heading (wrap words in *asterisks* to highlight them in wine-red italic)", name: "heading", widget: "text" }
+              - { label: "Body text", name: "body", widget: "text" }
+              - { label: "Signature line", name: "signature", widget: "string" }
+            }
+
+          - { label: "Footer / Contact Section", name: "footer", widget: "object", collapsed: true, fields:
+              - { label: "Small label", name: "kicker", widget: "string" }
+              - { label: "Heading — line 1", name: "headingLine1", widget: "string" }
+              - { label: "Heading — line 2, plain part", name: "headingLine2Plain", widget: "string" }
+              - { label: "Heading — line 2, italic part", name: "headingItalic", widget: "string" }
+              - { label: "Button label", name: "ctaLabel", widget: "string" }
+              - { label: "Contact email", name: "email", widget: "string" }
+              - { label: "Availability line", name: "availability", widget: "text" }
+              - { label: "Copyright line", name: "copyright", widget: "string" }
+              - { label: "Small tagline (bottom right)", name: "tagline", widget: "string" }
+              - { label: "Social links", name: "socials", widget: "list", summary: "{{label}}", fields:
+                  - { label: "Platform name", name: "label", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+                }
+            }
